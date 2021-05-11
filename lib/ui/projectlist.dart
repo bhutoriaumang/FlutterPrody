@@ -31,22 +31,21 @@ class ProjectList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text(
-                "ProDy",
-                style: TextStyle(
-                    color: tertiarycolor,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
-              ),
-              toolbarHeight: 80,
-              backgroundColor: secondarycolor,
-            ),
-            backgroundColor: secondarycolor,
-            body: cards()));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "ProDy",
+            style: TextStyle(
+                color: tertiarycolor,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic),
+          ),
+          toolbarHeight: 80,
+          backgroundColor: secondarycolor,
+        ),
+        backgroundColor: secondarycolor,
+        body: cards());
   }
 }
 
@@ -72,6 +71,7 @@ class ProjectCard extends StatelessWidget {
   final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
   final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
   final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
+
   @override
   Widget build(BuildContext context) {
     return Container(
