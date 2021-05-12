@@ -1,14 +1,12 @@
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:prody/ui/teammembers.dart';
-import 'piechart.dart';
 import 'calendar.dart';
 import 'deadlinegraph.dart';
+import 'piechart.dart';
+import 'package:prody/shared/constants.dart';
 
 class ProDyHome extends StatelessWidget {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -17,61 +15,55 @@ class ProDyHome extends StatelessWidget {
         title: Text(
           "ProDy",
           style: TextStyle(
-            color: tertiarycolor,
-            fontSize: 30,
-          ),
+              color: tertiarycolor,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic),
         ),
+        toolbarHeight: MediaQuery.of(context).size.height * 0.08,
         backgroundColor: secondarycolor,
-        toolbarHeight: 70,
       ),
       backgroundColor: secondarycolor,
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: ListView(children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.08),
+        child: ListView(children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.05, top: MediaQuery.of(context).size.width * 0.1),
+            child: ProjectLead(),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.05),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0, top: 40),
-                  child: ProjectLead(),
+                ProDyCard(
+                  field: "Card 1",
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ProDyCard(
-                        field: "Card 1",
-                      ),
-                      ProDyCard(
-                        field: "Card 2",
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ProDyCard(
-                        field: "Card 3",
-                      ),
-                      ProDyCard(
-                        field: "Card 4",
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: LineChartSample1(),
+                ProDyCard(
+                  field: "Card 2",
                 ),
               ],
             ),
-          ]),
-        ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width * 0.05),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ProDyCard(
+                  field: "Card 3",
+                ),
+                ProDyCard(
+                  field: "Card 4",
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.05, bottom: MediaQuery.of(context).size.width * 0.1),
+            child: LineChartSample1(),
+          ),
+        ]),
       ),
     );
   }
@@ -79,9 +71,6 @@ class ProDyHome extends StatelessWidget {
 
 class ProDyCard extends StatelessWidget {
   final String field;
-  final Color primarycolor = Color.fromRGBO(240, 235, 204, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   ProDyCard({this.field});
 
@@ -114,26 +103,24 @@ class ProDyCard extends StatelessWidget {
           "Maulik Bahri"
         ],
       );
-    else
-      return LineChartSample1();
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.38,
-      height: MediaQuery.of(context).size.width * 0.38,
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: MediaQuery.of(context).size.width * 0.4,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: tertiarycolor,
         elevation: 10,
-        margin: EdgeInsets.all(0),
         child: Center(
           child: ListTile(
             title: Center(
               child: cardType(),
             ),
-            minLeadingWidth: 60,
+            minLeadingWidth: MediaQuery.of(context).size.width * 0.15,
           ),
         ),
       ),
@@ -142,145 +129,124 @@ class ProDyCard extends StatelessWidget {
 }
 
 class ProjectLead extends StatelessWidget {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width * 0.38,
+      height: MediaQuery.of(context).size.width * 0.4,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: tertiarycolor,
         elevation: 10,
-        margin: EdgeInsets.all(0),
-        child: Center(
-          child: ListTile(
-            title: Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        child: Icon(
-                          Icons.person,
-                          color: primarycolor,
-                          size: 120,
-                        ),
-                        radius: 60,
-                        backgroundColor: tertiarycolor,
-                      ),
-                      Text(
-                        "Project Lead",
-                        style: TextStyle(
-                            color: primarycolor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  CircleAvatar(
+                    child: Icon(
+                      Icons.person,
+                      color: primarycolor,
+                      size: MediaQuery.of(context).size.width * 0.3,
+                    ),
+                    radius: MediaQuery.of(context).size.width * 0.15,
+                    backgroundColor: tertiarycolor,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, right: 00.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.person_add_alt_1_outlined,
-                                color: primarycolor,
-                              ),
-                              Container(
-                                child: Text(
-                                  "Umang Bhutoria",
-                                  style: TextStyle(
-                                      color: primarycolor,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.phone,
-                                color: primarycolor,
-                              ),
-                              Text(
-                                "6290340456",
-                                style: TextStyle(
-                                    color: primarycolor,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.email,
-                                color: primarycolor,
-                              ),
-                              Container(
-                                child: Text(
-                                  "bhutoriaumang@gmail.com",
-                                  style: TextStyle(
-                                      color: primarycolor,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ]),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 00.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.alternate_email,
-                                color: primarycolor,
-                              ),
-                              Container(
-                                child: Text(
-                                  "Umang@linkedIn.com",
-                                  style: TextStyle(
-                                      color: primarycolor,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ]),
-                      ),
-                    ],
+                  Text(
+                    "Project Lead",
+                    style: TextStyle(
+                        color: primarycolor,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-            ),
-            minLeadingWidth: 60,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.02),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.person_add_alt_1_outlined,
+                            color: primarycolor,
+                          ),
+                          Container(
+                            child: Text(
+                              "Umang Bhutoria",
+                              style: TextStyle(
+                                  color: primarycolor,
+                                  fontSize: MediaQuery.of(context).size.width * 0.025,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * 0.02,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          color: primarycolor,
+                        ),
+                        Text(
+                          "6290340456",
+                          style: TextStyle(
+                              color: primarycolor,
+                              fontSize: MediaQuery.of(context).size.width * 0.025,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ]),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * 0.02,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.email,
+                          color: primarycolor,
+                        ),
+                        Container(
+                          child: Text(
+                            "bhutoriaumang@gmail.com",
+                            style: TextStyle(
+                                color: primarycolor,
+                                fontSize: MediaQuery.of(context).size.width * 0.025,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ]),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * 0.02,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.alternate_email,
+                          color: primarycolor,
+                        ),
+                        Container(
+                          child: Text(
+                            "Umang@linkedIn.com",
+                            style: TextStyle(
+                                color: primarycolor,
+                                fontSize: MediaQuery.of(context).size.width * 0.025,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ]),
+                ],
+              ),
+            ],
           ),
-        ),
       ),
     );
   }

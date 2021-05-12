@@ -4,6 +4,7 @@ import 'package:prody/shared/constants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
+
   Register({this.toggleView, Key key}) : super(key: key);
 
   @override
@@ -11,14 +12,9 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
-
   final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
 
-  String name = "";
   String email = "";
   String password = "";
   String error = "";
@@ -45,16 +41,6 @@ class _RegisterState extends State<Register> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
-                  validator: (val) => val.isEmpty ? 'Enter a name' : null,
-                  onChanged: (val) {
-                    setState(() => name = val);
-                  },
-                  decoration: textInputDecoration.copyWith(
-                      hintText: 'Name',
-                      fillColor: tertiarycolor,
-                      filled: true)),
-              SizedBox(height: 20.0),
               TextFormField(
                   validator: (val) => val.isEmpty ? 'Enter an email' : null,
                   onChanged: (val) {
@@ -100,9 +86,7 @@ class _RegisterState extends State<Register> {
                 children: [
                   Text("Already a User?"),
                   MaterialButton(
-                    onPressed: () {
-                      widget.toggleView();
-                    },
+                    onPressed: () => widget.toggleView(),
                     child: Text(
                       "Sign In",
                       style: TextStyle(color: Colors.purple),

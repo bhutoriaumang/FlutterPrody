@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prody/shared/constants.dart';
 
 class TeamMembers extends StatelessWidget {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   //   "Arnav Bhargava",
   //   "Umang Bhutoria",

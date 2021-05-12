@@ -3,13 +3,10 @@ import 'package:prody/services/auth.dart';
 import 'package:prody/ui/home.dart';
 import 'package:prody/ui/personalinfo.dart';
 import 'package:prody/ui/piechart.dart';
+import 'package:prody/shared/constants.dart';
 
 class ProjectList extends StatelessWidget {
   final AuthService _auth = AuthService();
-
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   Widget cards() {
     return ListView.builder(
@@ -17,14 +14,14 @@ class ProjectList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         if (index != 0) {
           return Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
             child: Container(
               child: ProjectCard(),
             ),
           );
         } else {
           return Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.05),
             child: PersonalInfo(),
           );
         }
@@ -44,7 +41,7 @@ class ProjectList extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
           ),
-          toolbarHeight: 80,
+          toolbarHeight: MediaQuery.of(context).size.height * 0.08,
           backgroundColor: secondarycolor,
           actions: [
             // ignore: deprecated_member_use
@@ -80,12 +77,10 @@ Route createRoute() {
 }
 
 class ProjectCard extends StatelessWidget {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width * 0.38,
@@ -93,48 +88,47 @@ class ProjectCard extends StatelessWidget {
           color: tertiarycolor, borderRadius: BorderRadius.circular(20)),
       child: InkWell(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
           child: Row(
             children: [
-              Icon(
-                Icons.web,
-                color: primarycolor,
-                size: 50,
+              Expanded(
+                child: Icon(
+                  Icons.web,
+                  color: primarycolor,
+                  size: MediaQuery.of(context).size.width * 0.15,
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 60),
-                child: Container(
-                  width: 150,
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 40,
-                      ),
                       Text(
                         "Project 1",
+                        maxLines: 1,
                         style: TextStyle(
                           color: primarycolor,
                           fontSize: 20,
                         ),
                       ),
-                      Text.rich(TextSpan(
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "Project Details",
-                            ),
-                          ]))
+                      Text("Project Detailsded2d2d\n\n\newk\nn",
+                        maxLines: 4,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
+                      ),
+
                     ],
                   ),
                 ),
               ),
-              PieChart2(
+              Expanded(
+                child: PieChart2(
                 completed: 0.75,
-              ),
+              ),)
             ],
           ),
         ),

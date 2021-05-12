@@ -11,9 +11,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
@@ -82,10 +79,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   Text("New User?"),
                   MaterialButton(
-                    onPressed: () {
-                      print("button pressed");
-                      widget.toggleView();
-                    },
+                    onPressed: () => widget.toggleView(),
                     child: Text(
                       "Register",
                       style: TextStyle(color: Colors.purple),

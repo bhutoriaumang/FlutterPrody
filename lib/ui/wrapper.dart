@@ -11,10 +11,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
-    //return user == null ? Authenticate() : ProjectList();
-    if (user == null)
-      return Authenticate();
-    else
-      return ProjectList();
+    return user == null ? Authenticate() : ProjectList();
   }
 }

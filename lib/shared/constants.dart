@@ -16,3 +16,7 @@ const textInputDecoration = InputDecoration(
       )
   ),
 );
+
+const Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
+const Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
+const Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);

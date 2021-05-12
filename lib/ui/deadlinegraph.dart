@@ -9,10 +9,6 @@ class LineChartSample1 extends StatefulWidget {
 class LineChartSample1State extends State<LineChartSample1> {
   bool isShowingMainData;
 
-  Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
-
   @override
   void initState() {
     super.initState();
@@ -24,8 +20,9 @@ class LineChartSample1State extends State<LineChartSample1> {
     return AspectRatio(
       aspectRatio: 1.23,
       child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+              Radius.circular(MediaQuery.of(context).size.width * 0.045)),
           gradient: LinearGradient(
             colors: [
               Color.fromRGBO(212, 241, 244, 1),
@@ -40,25 +37,25 @@ class LineChartSample1State extends State<LineChartSample1> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const SizedBox(
-                  height: 37,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.1,
                 ),
-                const Text(
+                Text(
                   'Unfold Shop 2018',
                   style: TextStyle(
                     color: Color.fromRGBO(5, 68, 94, 1),
-                    fontSize: 16,
+                    fontSize: MediaQuery.of(context).size.width * 0.04,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
                   height: 4,
                 ),
-                const Text(
+                Text(
                   'Monthly Sales',
                   style: TextStyle(
                       color: Color.fromRGBO(5, 68, 94, 1),
-                      fontSize: 32,
+                      fontSize: MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2),
                   textAlign: TextAlign.center,
@@ -75,8 +72,8 @@ class LineChartSample1State extends State<LineChartSample1> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.025,
                 ),
               ],
             ),

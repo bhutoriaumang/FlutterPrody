@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prody/shared/constants.dart';
 
 class PersonalInfo extends StatelessWidget {
-  final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
-  final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
-  final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +10,7 @@ class PersonalInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 20.0, left: 20),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width * 0.35,
             decoration: BoxDecoration(
                 color: tertiarycolor, borderRadius: BorderRadius.circular(20)),
@@ -29,104 +27,92 @@ class PersonalInfo extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 20),
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.05, left: MediaQuery.of(context).size.width * 0.05),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.18,
+            height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width * 0.5,
             decoration: BoxDecoration(
                 color: tertiarycolor, borderRadius: BorderRadius.circular(20)),
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 00.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.person_add_alt_1_outlined,
-                            color: primarycolor,
-                          ),
-                          Container(
-                            child: Text(
-                              "Umang Bhutoria",
-                              style: TextStyle(
-                                  color: primarycolor,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ]),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.phone,
-                            color: primarycolor,
-                          ),
-                          Text(
-                            "6290340456",
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.person_add_alt_1_outlined,
+                          color: primarycolor,
+                        ),
+                        Container(
+                          child: Text(
+                            "Umang Bhutoria",
                             style: TextStyle(
                                 color: primarycolor,
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold),
                           ),
-                        ]),
-                  ),
+                        ),
+                      ]),
                   SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.email,
-                            color: primarycolor,
-                          ),
-                          Container(
-                            child: Text(
-                              "bhutoriaumang@gmail.com",
-                              style: TextStyle(
-                                  color: primarycolor,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ]),
-                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          color: primarycolor,
+                        ),
+                        Text(
+                          "6290340456",
+                          style: TextStyle(
+                              color: primarycolor,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ]),
                   SizedBox(
                     height: 8,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 00.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.alternate_email,
-                            color: primarycolor,
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.email,
+                          color: primarycolor,
+                        ),
+                        Container(
+                          child: Text(
+                            "bhutoriaumang@gmail.com",
+                            style: TextStyle(
+                                color: primarycolor,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
                           ),
-                          Container(
-                            child: Text(
-                              "Umang@linkedIn.com",
-                              style: TextStyle(
-                                  color: primarycolor,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ]),
+                        ),
+                      ]),
+                  SizedBox(
+                    height: 8,
                   ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.alternate_email,
+                          color: primarycolor,
+                        ),
+                        Container(
+                          child: Text(
+                            "Umang@linkedIn.com",
+                            style: TextStyle(
+                                color: primarycolor,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ]),
                 ],
               ),
             ),
