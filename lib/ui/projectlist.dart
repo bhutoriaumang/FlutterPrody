@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prody/services/auth.dart';
 import 'package:prody/ui/home.dart';
 import 'package:prody/ui/personalinfo.dart';
 import 'package:prody/ui/piechart.dart';
 
 class ProjectList extends StatelessWidget {
+  final AuthService _auth = AuthService();
+
   final Color primarycolor = Color.fromRGBO(5, 68, 94, 1);
   final Color secondarycolor = Color.fromRGBO(24, 154, 180, 1);
   final Color tertiarycolor = Color.fromRGBO(212, 241, 244, 1);
@@ -43,6 +46,15 @@ class ProjectList extends StatelessWidget {
           ),
           toolbarHeight: 80,
           backgroundColor: secondarycolor,
+          actions: [
+            // ignore: deprecated_member_use
+            FlatButton.icon(
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+                icon: Icon(Icons.person),
+                label: Text("logout"))
+          ],
         ),
         backgroundColor: secondarycolor,
         body: cards());

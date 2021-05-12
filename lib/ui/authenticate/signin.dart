@@ -3,7 +3,6 @@ import 'package:prody/services/auth.dart';
 import 'package:prody/shared/constants.dart';
 
 class SignIn extends StatefulWidget {
-
   final Function toggleView;
   SignIn({this.toggleView, Key key}) : super(key: key);
 
@@ -85,7 +84,7 @@ class _SignInState extends State<SignIn> {
                   MaterialButton(
                     onPressed: () {
                       print("button pressed");
-                      widget.toggleView;
+                      widget.toggleView();
                     },
                     child: Text(
                       "Register",
