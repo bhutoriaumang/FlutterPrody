@@ -102,28 +102,30 @@ class ProjectCard extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: MediaQuery.of(context).size.width * 0.05,
-                      right: MediaQuery.of(context).size.width * 0.15,
-                      top: MediaQuery.of(context).size.height * 0.01),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Project 1",
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: primarycolor,
-                          fontSize: 20,
+                      right: MediaQuery.of(context).size.width * 0.15),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Project 1",
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: primarycolor,
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Project Details",
-                        maxLines: 4,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
+                        Text(
+                          "Project Details",
+                          maxLines: 4,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
