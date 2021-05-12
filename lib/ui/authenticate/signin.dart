@@ -11,7 +11,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
 
@@ -46,7 +45,10 @@ class _SignInState extends State<SignIn> {
                   onChanged: (val) {
                     setState(() => email = val);
                   },
-                  decoration: textInputDecoration.copyWith(hintText: 'Email')),
+                  decoration: textInputDecoration.copyWith(
+                      hintText: 'Email',
+                      fillColor: tertiarycolor,
+                      filled: true)),
               SizedBox(height: 20.0),
               TextFormField(
                 validator: (val) => val.length < 6
@@ -56,7 +58,10 @@ class _SignInState extends State<SignIn> {
                 onChanged: (val) {
                   setState(() => password = val);
                 },
-                decoration: textInputDecoration.copyWith(hintText: 'Password'),
+                decoration: textInputDecoration.copyWith(
+                    hintText: 'Password',
+                    fillColor: tertiarycolor,
+                    filled: true),
               ),
               SizedBox(height: 20.0),
               MaterialButton(

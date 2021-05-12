@@ -21,7 +21,8 @@ class ProjectList extends StatelessWidget {
           );
         } else {
           return Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.05),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.width * 0.05),
             child: PersonalInfo(),
           );
         }
@@ -77,10 +78,8 @@ Route createRoute() {
 }
 
 class ProjectCard extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width * 0.38,
@@ -95,13 +94,16 @@ class ProjectCard extends StatelessWidget {
                 child: Icon(
                   Icons.web,
                   color: primarycolor,
-                  size: MediaQuery.of(context).size.width * 0.15,
+                  size: MediaQuery.of(context).size.width * 0.17,
                 ),
               ),
               Expanded(
                 flex: 3,
                 child: Padding(
-                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.15),
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      right: MediaQuery.of(context).size.width * 0.15,
+                      top: MediaQuery.of(context).size.height * 0.01),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -113,22 +115,23 @@ class ProjectCard extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      Text("Project Detailsded2d2d\n\n\newk\nn",
+                      Text(
+                        "Project Details",
                         maxLines: 4,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
                       ),
-
                     ],
                   ),
                 ),
               ),
               Expanded(
                 child: PieChart2(
-                completed: 0.75,
-              ),)
+                  completed: 0.75,
+                ),
+              )
             ],
           ),
         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:prody/shared/constants.dart';
 
 class PersonalInfo extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,22 +18,26 @@ class PersonalInfo extends StatelessWidget {
               child: Icon(
                 Icons.person,
                 color: primarycolor,
-                size: 100,
+                size: MediaQuery.of(context).size.height * 0.16,
               ),
-              radius: 50,
+              radius: MediaQuery.of(context).size.width * 0.35,
               backgroundColor: tertiarycolor,
             )),
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.05, left: MediaQuery.of(context).size.width * 0.05),
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.width * 0.05,
+              left: MediaQuery.of(context).size.width * 0.05),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width * 0.5,
             decoration: BoxDecoration(
                 color: tertiarycolor, borderRadius: BorderRadius.circular(20)),
             child: Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
+              padding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.width * 0.07,
+                  horizontal: MediaQuery.of(context).size.width * 0.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
