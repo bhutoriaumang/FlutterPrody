@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:prody/shared/constants.dart';
 
 class TeamMembers extends StatelessWidget {
-
   //   "Arnav Bhargava",
   //   "Umang Bhutoria",
   //   "Tanmay Ghodeshwar",
@@ -16,14 +15,16 @@ class TeamMembers extends StatelessWidget {
 
   TeamMembers({this.field, this.members});
 
-  List<Widget> teammembers() {
+  List<Widget> teammembers(BuildContext context) {
     List<Text> memb = [];
 
     for (int i = 0; i < members.length; i++) {
       memb.add(Text(
         "\u2022" + members[i],
         style: TextStyle(
-            fontSize: 12, fontWeight: FontWeight.w500, color: primarycolor),
+            fontSize: MediaQuery.of(context).size.width * 0.04,
+            fontWeight: FontWeight.w500,
+            color: primaryColor),
       ));
     }
 
@@ -34,7 +35,8 @@ class TeamMembers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(top: 12.0, bottom: 12),
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.015),
         child: ListView(children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -43,15 +45,15 @@ class TeamMembers extends StatelessWidget {
                   Text(
                     field,
                     style: TextStyle(
-                        fontSize: 17,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
                         fontWeight: FontWeight.bold,
-                        color: primarycolor),
+                        color: primaryColor),
                   ),
                   SizedBox(
-                    height: 16,
+                    height: MediaQuery.of(context).size.height * 0.02,
                   )
                 ] +
-                teammembers(),
+                teammembers(context),
           ),
         ]),
       ),

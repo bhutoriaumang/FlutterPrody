@@ -79,7 +79,7 @@ class LineChartSample1State extends State<LineChartSample1> {
             ),
             IconButton(
               icon: Icon(
-                Icons.refresh,
+                Icons.radio_button_checked,
                 color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
               ),
               onPressed: () {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prody/ui/authenticate/register.dart';
-import 'package:prody/ui/authenticate/signin.dart';
+import 'package:prody/ui/screens/authenticate/register.dart';
+import 'package:prody/ui/screens/authenticate/signin.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({Key key}) : super(key: key);
@@ -10,7 +10,7 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
-  bool showSignIn = false;
+  bool showSignIn = true;
 
   void toggleView() {
     setState(() => showSignIn = !showSignIn);

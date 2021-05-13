@@ -26,7 +26,9 @@ class PieChart3 extends StatelessWidget {
         center: new Text(
           (completed * 100).toStringAsPrecision(4) + "%",
           style: new TextStyle(
-              fontWeight: FontWeight.bold, color: primarycolor, fontSize: 14.0),
+              fontWeight: FontWeight.bold,
+              color: primaryColor,
+              fontSize: MediaQuery.of(context).size.width * 0.045),
         ),
         footer: Padding(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
@@ -34,8 +36,8 @@ class PieChart3 extends StatelessWidget {
             "Completion",
             style: new TextStyle(
                 fontWeight: FontWeight.bold,
-                color: primarycolor,
-                fontSize: 14.0),
+                color: primaryColor,
+                fontSize: MediaQuery.of(context).size.width * 0.045),
           ),
         ),
         circularStrokeCap: CircularStrokeCap.round,
@@ -67,12 +69,12 @@ class PieChart2 extends StatelessWidget {
             (completed * 100).toStringAsPrecision(2) + "%",
             style: new TextStyle(
                 fontWeight: FontWeight.bold,
-                color: primarycolor,
-                fontSize: 14.0),
+                color: primaryColor,
+                fontSize: MediaQuery.of(context).size.width * 0.05),
           ),
         ),
         circularStrokeCap: CircularStrokeCap.round,
-        progressColor: primarycolor.withOpacity(0.75),
+        progressColor: primaryColor.withOpacity(0.75),
         backgroundColor: Colors.transparent,
       ),
     );

@@ -12,7 +12,7 @@ class Calendar extends StatelessWidget {
     "Final projeect submission deadline": false
   };
 
-  List<Widget> deadlinesfunc() {
+  List<Widget> deadlinesfunc(BuildContext context) {
     List<Widget> column = [];
     for (int i = 0; i < 7; i++) {
       if (deadlines.values.elementAt(i) == true) {
@@ -22,9 +22,8 @@ class Calendar extends StatelessWidget {
             "\u2022" + deadlines.keys.elementAt(i),
             style: TextStyle(
                 color: Colors.grey,
-                fontSize: 14,
-                fontWeight:
-                FontWeight.w300),
+                fontSize: MediaQuery.of(context).size.width * 0.04,
+                fontWeight: FontWeight.w300),
           ),
         ));
       } else {
@@ -34,9 +33,8 @@ class Calendar extends StatelessWidget {
             "\u2022" + deadlines.keys.elementAt(i),
             style: TextStyle(
                 color: Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w400
-            ),
+                fontSize: MediaQuery.of(context).size.width * 0.04,
+                fontWeight: FontWeight.w400),
           ),
         ));
       }
@@ -52,8 +50,7 @@ class Calendar extends StatelessWidget {
           style: TextStyle(
               fontSize: MediaQuery.of(context).size.width * 0.04,
               fontWeight: FontWeight.w500,
-              color: primarycolor
-          ),
+              color: primaryColor),
         );
     }
     return Text(
@@ -61,7 +58,7 @@ class Calendar extends StatelessWidget {
       style: TextStyle(
           fontSize: MediaQuery.of(context).size.width * 0.04,
           fontWeight: FontWeight.w500,
-          color: primarycolor),
+          color: primaryColor),
     );
   }
 
@@ -76,12 +73,12 @@ class Calendar extends StatelessWidget {
             Text(
               "Deadlines :",
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.045,
+                  fontSize: MediaQuery.of(context).size.width * 0.05,
                   fontWeight: FontWeight.bold,
-                  color: primarycolor),
+                  color: primaryColor),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.width * 0.05,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             nextDeadline(context),
           ]),

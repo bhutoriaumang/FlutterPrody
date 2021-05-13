@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:prody/ui/authenticate/authenticate.dart';
-import 'package:prody/ui/projectlist.dart';
+import 'package:prody/ui/screens/authenticate/authenticate.dart';
+import 'package:prody/ui/screens/home.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -11,6 +11,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
-    return user == null ? Authenticate() : ProjectList();
+    return user == null ? Authenticate() : Home();
   }
 }
