@@ -1,15 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:prody/models/CurrentUser.dart';
 
-class DataBaseService {
+class DatabaseService {
   final String uid;
-  DataBaseService({this.uid});
-  final CollectionReference employees =
+  Employee employee;
+
+  DatabaseService({@required this.uid});
+
+  final CollectionReference _employees =
       FirebaseFirestore.instance.collection("Employees");
 
-  Future updataEmployeeData(
+  Future updateEmployeeData(
       String name, String phn, String email, String linkedIn) async {
-    return await employees.doc(uid).set({
+    print("$name, $phn, $email, $linkedIn");
+    return await _employees.doc(uid).set({
       "uid": uid,
       "name": name,
       "phn": phn,
@@ -18,7 +23,7 @@ class DataBaseService {
     });
   }
 
-  Employee _employeeDatafromSnapshot(DocumentSnapshot snapshot) {
+  Employee _employeeDataFromSnapshot(DocumentSnapshot snapshot) {
     return Employee(
       uid: uid,
       name: snapshot.get("name"),
@@ -29,9 +34,9 @@ class DataBaseService {
   }
 
   Stream<Employee> get employeeData {
-    return employees
+    return _employees
         .doc(uid)
         .snapshots()
-        .map((snapshot) => _employeeDatafromSnapshot(snapshot));
+        .map((snapshot) => _employeeDataFromSnapshot(snapshot));
   }
 }

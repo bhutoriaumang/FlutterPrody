@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/services/database.dart';
@@ -7,9 +8,11 @@ import 'package:provider/provider.dart';
 class PersonalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     Employee employee = Provider.of<Employee>(context);
+
     return StreamBuilder<Employee>(
-        stream: DataBaseService(uid: employee.uid).employeeData,
+        stream: DatabaseService(uid: employee.uid).employeeData,
         builder: (context, snapshot) {
           if (snapshot.data != null) {
             return Row(
@@ -103,15 +106,20 @@ class PersonalInfo extends StatelessWidget {
                                   Icons.email,
                                   color: primaryColor,
                                 ),
-                                Container(
-                                  child: Text(
-                                    snapshot.data.email,
-                                    style: TextStyle(
-                                        color: primaryColor,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                                0.022,
-                                        fontWeight: FontWeight.bold),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.03),
+                                    child: Text(
+                                      snapshot.data.email,
+                                      textAlign: TextAlign.end,
+                                      overflow: TextOverflow.clip,
+                                      style: TextStyle(
+                                          color: primaryColor,
+                                          fontSize:
+                                              MediaQuery.of(context).size.width *
+                                                  0.03,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ),
                               ]),

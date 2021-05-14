@@ -55,7 +55,7 @@ class _SignInState extends State<SignIn> {
                     textInputAction: TextInputAction.next,
                     validator: (val) => val.isEmpty ? 'Enter an email' : null,
                     onChanged: (val) {
-                      setState(() => email = val);
+                      setState(() => email = val.trim());
                     },
                     decoration: textInputDecoration.copyWith(
                         hintText: 'Email',
@@ -68,7 +68,7 @@ class _SignInState extends State<SignIn> {
                       : null,
                   obscureText: obscureText,
                   onChanged: (val) {
-                    setState(() => password = val);
+                    setState(() => password = val.trim());
                   },
                   decoration: textInputDecoration.copyWith(
                       hintText: 'Password',

@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/services/database.dart';
+import 'package:provider/provider.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Employee _userfromfirebaseuser(User user) {
+  Employee _userFromFirebaseUser(User user) {
     return user != null
         ? Employee(
             uid: user.uid,
@@ -17,16 +18,16 @@ class AuthService {
   }
 
   Stream<Employee> get user {
-    return _auth.authStateChanges().map((user) => _userfromfirebaseuser(user));
+    return _auth.authStateChanges().map((user) => _userFromFirebaseUser(user));
   }
 
   Future register(String email, String password) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      DataBaseService(uid: result.user.uid)
-          .updataEmployeeData("name", "phn", "email", "linkedIn");
-      return _userfromfirebaseuser(result.user);
+      DatabaseService(uid: result.user.uid)
+          .updateEmployeeData("name", "phn", result.user.email, "linkedIn");
+      return _userFromFirebaseUser(result.user);
     } catch (e) {
       FirebaseAuthException exception = e;
       return exception.message;
@@ -37,7 +38,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      return _userfromfirebaseuser(result.user);
+      return _userFromFirebaseUser(result.user);
     } catch (e) {
       FirebaseAuthException exception = e;
       return exception.message;
