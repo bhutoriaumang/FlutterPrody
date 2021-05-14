@@ -1,9 +1,9 @@
-class CurrentUser {
-
+class Employee {
   String uid;
   String name;
-  String phoneNo;
+  String phn;
   String email;
+  String linkedIn;
 
-  CurrentUser({this.uid, this.name, this.phoneNo, this.email});
+  Employee({this.uid, this.name, this.phn, this.email, this.linkedIn});
 }

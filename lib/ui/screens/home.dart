@@ -1,36 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/services/auth.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/ui/screens/project_info.dart';
 import 'package:prody/ui/cards/personalinfo.dart';
 import 'package:prody/ui/cards/piechart.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
-
-  Widget cards() {
-    return ListView.builder(
-      itemCount: 10 + 1,
-      itemBuilder: (BuildContext context, int index) {
-        if (index != 0) {
-          return Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
-            child: Container(
-              child: ProjectCard(),
-            ),
-          );
-        } else {
-          return Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.width * 0.05),
-            child: PersonalInfo(),
-          );
-        }
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,6 +46,28 @@ class Home extends StatelessWidget {
         backgroundColor: secondaryColor,
         body: cards());
   }
+}
+
+Widget cards() {
+  return ListView.builder(
+    itemCount: 10 + 1,
+    itemBuilder: (BuildContext context, int index) {
+      if (index != 0) {
+        return Padding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+          child: Container(
+            child: ProjectCard(),
+          ),
+        );
+      } else {
+        return Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.05),
+          child: PersonalInfo(),
+        );
+      }
+    },
+  );
 }
 
 Route createRoute() {
