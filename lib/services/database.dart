@@ -10,6 +10,7 @@ class DataBaseService {
   Future updataEmployeeData(
       String name, String phn, String email, String linkedIn) async {
     return await employees.doc(uid).set({
+      "uid": uid,
       "name": name,
       "phn": phn,
       "email": email,

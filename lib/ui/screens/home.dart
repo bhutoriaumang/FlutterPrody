@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/services/auth.dart';
 import 'package:prody/shared/constants.dart';
+import 'package:prody/ui/screens/profile.dart';
 import 'package:prody/ui/screens/project_info.dart';
 import 'package:prody/ui/cards/personalinfo.dart';
 import 'package:prody/ui/cards/piechart.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -27,20 +25,36 @@ class Home extends StatelessWidget {
           actions: [
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
+                  horizontal: MediaQuery.of(context).size.width * 0.001),
               child: TextButton.icon(
-                  onPressed: () async {
-                    await _auth.signOut();
+                  onPressed: () {
+                    Navigator.of(context).push(createRoute2());
                   },
                   icon: Icon(
                     Icons.person,
                     color: tertiaryColor,
                   ),
                   label: Text(
+                    "profile",
+                    style: TextStyle(color: tertiaryColor),
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.001),
+              child: TextButton.icon(
+                  onPressed: () async {
+                    await _auth.signOut();
+                  },
+                  icon: Icon(
+                    Icons.exit_to_app_outlined,
+                    color: tertiaryColor,
+                  ),
+                  label: Text(
                     "logout",
                     style: TextStyle(color: tertiaryColor),
                   )),
-            )
+            ),
           ],
         ),
         backgroundColor: secondaryColor,
@@ -73,6 +87,24 @@ Widget cards() {
 Route createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => ProjectInfo(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 2.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Profile(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 2.0);
       var end = Offset.zero;
