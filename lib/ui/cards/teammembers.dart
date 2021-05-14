@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:prody/shared/constants.dart';
 
 class TeamMembers extends StatelessWidget {
-  //   "Arnav Bhargava",
-  //   "Umang Bhutoria",
-  //   "Tanmay Ghodeshwar",
-  //   "Madhur",
-  //   "Adeel",
-  //   "Maulik Bahri"
-  // ];
-
   final List members;
   final String field;
 
@@ -22,7 +14,7 @@ class TeamMembers extends StatelessWidget {
       memb.add(Text(
         "\u2022" + members[i],
         style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.04,
+            fontSize: MediaQuery.of(context).size.width * 0.033,
             fontWeight: FontWeight.w500,
             color: primaryColor),
       ));
@@ -45,12 +37,12 @@ class TeamMembers extends StatelessWidget {
                   Text(
                     field,
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.05,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
                         fontWeight: FontWeight.bold,
                         color: primaryColor),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
+                    height: MediaQuery.of(context).size.height * 0.013,
                   )
                 ] +
                 teammembers(context),

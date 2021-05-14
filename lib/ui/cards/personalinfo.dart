@@ -42,6 +42,7 @@ class PersonalInfo extends StatelessWidget {
                   horizontal: MediaQuery.of(context).size.width * 0.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +57,7 @@ class PersonalInfo extends StatelessWidget {
                             style: TextStyle(
                                 color: primaryColor,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * 0.035,
+                                    MediaQuery.of(context).size.width * 0.03,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -76,7 +77,7 @@ class PersonalInfo extends StatelessWidget {
                           style: TextStyle(
                               color: primaryColor,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.035,
+                                  MediaQuery.of(context).size.width * 0.03,
                               fontWeight: FontWeight.bold),
                         ),
                       ]),
@@ -96,7 +97,7 @@ class PersonalInfo extends StatelessWidget {
                             style: TextStyle(
                                 color: primaryColor,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * 0.025,
+                                    MediaQuery.of(context).size.width * 0.022,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -117,7 +118,7 @@ class PersonalInfo extends StatelessWidget {
                             style: TextStyle(
                                 color: primaryColor,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * 0.03,
+                                    MediaQuery.of(context).size.width * 0.025,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),

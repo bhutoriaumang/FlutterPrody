@@ -19,7 +19,7 @@ class PieChart3 extends StatelessWidget {
 
     return Container(
       child: new CircularPercentIndicator(
-        radius: 100.0,
+        radius: MediaQuery.of(context).size.width * 0.27,
         lineWidth: 12.0,
         animation: true,
         percent: completed,
@@ -28,7 +28,7 @@ class PieChart3 extends StatelessWidget {
           style: new TextStyle(
               fontWeight: FontWeight.bold,
               color: primaryColor,
-              fontSize: MediaQuery.of(context).size.width * 0.045),
+              fontSize: MediaQuery.of(context).size.width * 0.04),
         ),
         footer: Padding(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
@@ -37,7 +37,7 @@ class PieChart3 extends StatelessWidget {
             style: new TextStyle(
                 fontWeight: FontWeight.bold,
                 color: primaryColor,
-                fontSize: MediaQuery.of(context).size.width * 0.045),
+                fontSize: MediaQuery.of(context).size.width * 0.04),
           ),
         ),
         circularStrokeCap: CircularStrokeCap.round,
@@ -70,7 +70,7 @@ class PieChart2 extends StatelessWidget {
             style: new TextStyle(
                 fontWeight: FontWeight.bold,
                 color: primaryColor,
-                fontSize: MediaQuery.of(context).size.width * 0.05),
+                fontSize: MediaQuery.of(context).size.width * 0.04),
           ),
         ),
         circularStrokeCap: CircularStrokeCap.round,

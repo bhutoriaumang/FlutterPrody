@@ -162,7 +162,7 @@ class ProjectLead extends StatelessWidget {
                   "Project Lead",
                   style: TextStyle(
                       color: primaryColor,
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -186,7 +186,7 @@ class ProjectLead extends StatelessWidget {
                             style: TextStyle(
                                 color: primaryColor,
                                 fontSize:
-                                    MediaQuery.of(context).size.width * 0.035,
+                                    MediaQuery.of(context).size.width * 0.03,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -206,7 +206,7 @@ class ProjectLead extends StatelessWidget {
                         "6290340456",
                         style: TextStyle(
                             color: primaryColor,
-                            fontSize: MediaQuery.of(context).size.width * 0.035,
+                            fontSize: MediaQuery.of(context).size.width * 0.03,
                             fontWeight: FontWeight.bold),
                       ),
                     ]),
@@ -226,7 +226,7 @@ class ProjectLead extends StatelessWidget {
                           style: TextStyle(
                               color: primaryColor,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.03,
+                                  MediaQuery.of(context).size.width * 0.025,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -247,7 +247,7 @@ class ProjectLead extends StatelessWidget {
                           style: TextStyle(
                               color: primaryColor,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.035,
+                                  MediaQuery.of(context).size.width * 0.03,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
