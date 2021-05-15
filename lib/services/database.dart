@@ -38,4 +38,8 @@ class DatabaseService {
         .snapshots()
         .map((snapshot) => _employeeDataFromSnapshot(snapshot));
   }
+
+  Future<Employee> employee() async {
+    return _employeeDataFromSnapshot(await _employees.doc(uid).get());
+  }
 }

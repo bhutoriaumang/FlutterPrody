@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prody/services/database.dart';
 import 'package:prody/shared/constants.dart';
 
 class TeamMembers extends StatelessWidget {
@@ -7,20 +8,28 @@ class TeamMembers extends StatelessWidget {
 
   TeamMembers({this.field, this.members});
 
-  List<Widget> teammembers(BuildContext context) {
-    List<Text> memb = [];
+  List<Widget> teamMembers(BuildContext context) {
+    List<Widget> memberNames = [];
 
     for (int i = 0; i < members.length; i++) {
-      memb.add(Text(
-        "\u2022" + members[i],
-        style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.033,
-            fontWeight: FontWeight.w500,
-            color: primaryColor),
-      ));
+      DatabaseService _database = DatabaseService(uid: members[i]);
+      memberNames.add(FutureBuilder(
+          future: _database.employee(),
+          builder: (context, snapshot) {
+            if(snapshot != null)
+            return Text(
+              "\u2022" + snapshot.data.name,
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width * 0.033,
+                  fontWeight: FontWeight.w500,
+                  color: primaryColor),
+            );
+            else
+              return Container();
+          }));
     }
 
-    return memb;
+    return memberNames;
   }
 
   @override
@@ -45,7 +54,7 @@ class TeamMembers extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.013,
                   )
                 ] +
-                teammembers(context),
+                teamMembers(context),
           ),
         ]),
       ),

@@ -20,7 +20,8 @@ class DataBaseServiceProject {
       title: snapshot.get("title"),
       details: snapshot.get("details"),
       deadlines: snapshot.get("deadlines"),
-      employees: snapshot.get("employees"),
+      designTeam: snapshot.get("employees"),
+      webTeam: snapshot.get("webTeam")
     );
   }
 
@@ -42,7 +43,8 @@ class DataBaseServiceProject {
             title: doc["title"],
             details: doc["details"],
             deadlines: doc["deadlines"],
-            employees: doc["employees"]));
+            designTeam: doc["employees"],
+            webTeam: doc["webTeam"]));
       });
     });
     return projects;

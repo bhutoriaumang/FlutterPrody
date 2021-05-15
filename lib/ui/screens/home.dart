@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/models/project.dart';
 import 'package:prody/services/auth.dart';
-import 'package:prody/services/databas_project.dart';
+import 'package:prody/services/database_project.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/ui/screens/profile.dart';
 import 'package:prody/ui/screens/project_info.dart';
@@ -101,9 +101,9 @@ Widget cards(BuildContext context) {
       });
 }
 
-Route createRoute() {
+Route createRoute(Project project) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => ProjectInfo(),
+    pageBuilder: (context, animation, secondaryAnimation) => ProjectInfo(project),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 2.0);
       var end = Offset.zero;
@@ -202,7 +202,7 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Navigator.of(context).push(createRoute());
+          Navigator.of(context).push(createRoute(project));
         },
       ),
     );
