@@ -152,7 +152,8 @@ class _ProfileState extends State<Profile> {
                                       _currentName ?? snapshot.data.name,
                                       _currentPhn ?? snapshot.data.phn,
                                       _currentMail ?? snapshot.data.email,
-                                      _currentLinkedIn ?? snapshot.data.linkedIn);
+                                      _currentLinkedIn ??
+                                          snapshot.data.linkedIn);
                                   EasyLoading.dismiss();
                                   Navigator.pop(context);
                                 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:prody/models/CurrentUser.dart';
+import 'package:prody/models/project.dart';
 import 'package:prody/services/auth.dart';
+import 'package:prody/services/databas_project.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/ui/screens/profile.dart';
 import 'package:prody/ui/screens/project_info.dart';
 import 'package:prody/ui/cards/personalinfo.dart';
 import 'package:prody/ui/cards/piechart.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -58,30 +62,43 @@ class Home extends StatelessWidget {
           ],
         ),
         backgroundColor: secondaryColor,
-        body: cards());
+        body: cards(context));
   }
 }
 
-Widget cards() {
-  return ListView.builder(
-    itemCount: 10 + 1,
-    itemBuilder: (BuildContext context, int index) {
-      if (index != 0) {
-        return Padding(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
-          child: Container(
-            child: ProjectCard(),
-          ),
-        );
-      } else {
-        return Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.05),
-          child: PersonalInfo(),
-        );
-      }
-    },
-  );
+Widget cards(BuildContext context) {
+  final employee = Provider.of<Employee>(context);
+  Future<List<Project>> projects =
+      DataBaseServiceProject().userProjects(employee.uid);
+
+  return FutureBuilder(
+      future: projects.then((project) => project),
+      builder: (context, projectSnap) {
+        if (projectSnap.data != null) {
+          return ListView.builder(
+              itemCount: projectSnap.data.length + 1,
+              itemBuilder: (context, index) {
+                if (index != 0) {
+                  Project project = projectSnap.data[index - 1];
+                  return Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.05),
+                    child: Container(
+                      child: ProjectCard(project: project),
+                    ),
+                  );
+                } else {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).size.width * 0.05),
+                    child: PersonalInfo(),
+                  );
+                }
+              });
+        } else {
+          return Container();
+        }
+      });
 }
 
 Route createRoute() {
@@ -121,6 +138,10 @@ Route createRoute2() {
 }
 
 class ProjectCard extends StatelessWidget {
+  final Project project;
+
+  ProjectCard({this.project});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -152,7 +173,7 @@ class ProjectCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Project 1",
+                          project.title,
                           maxLines: 1,
                           style: TextStyle(
                             color: primaryColor,
@@ -160,7 +181,7 @@ class ProjectCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Project Details",
+                          project.details,
                           maxLines: 4,
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * 0.04,

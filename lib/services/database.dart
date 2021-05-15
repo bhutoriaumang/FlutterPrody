@@ -4,7 +4,6 @@ import 'package:prody/models/CurrentUser.dart';
 
 class DatabaseService {
   final String uid;
-  Employee employee;
 
   DatabaseService({@required this.uid});
 
