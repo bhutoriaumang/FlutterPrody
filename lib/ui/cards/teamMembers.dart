@@ -16,14 +16,14 @@ class TeamMembers extends StatelessWidget {
       memberNames.add(FutureBuilder(
           future: _database.employee(),
           builder: (context, snapshot) {
-            if(snapshot != null)
-            return Text(
-              "\u2022" + snapshot.data.name,
-              style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.033,
-                  fontWeight: FontWeight.w500,
-                  color: primaryColor),
-            );
+            if (snapshot.data != null)
+              return Text(
+                "\u2022" + snapshot.data.name,
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.033,
+                    fontWeight: FontWeight.w500,
+                    color: primaryColor),
+              );
             else
               return Container();
           }));
