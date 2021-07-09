@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:prody/ui/cards/employees.dart';
+import 'package:prody/ui/screens/teamMembersInfo.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/CurrentUser.dart';
-import 'teamMembers.dart';
 
 class EmployeesList extends StatefulWidget {
   @override
@@ -17,8 +18,7 @@ class _EmployeesListState extends State<EmployeesList> {
     for (int i = 0; i < employees.length; i++) {
       employeesid.add(employees[i].uid);
     }
-    return TeamMembers(
-      field: "New Project",
+    return EmployeesProjectList(
       members: employeesid,
     );
   }
