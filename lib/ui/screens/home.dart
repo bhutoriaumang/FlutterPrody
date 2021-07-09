@@ -4,6 +4,8 @@ import 'package:prody/models/project.dart';
 import 'package:prody/services/auth.dart';
 import 'package:prody/services/database_project.dart';
 import 'package:prody/shared/constants.dart';
+import 'package:prody/ui/cards/newproject.dart';
+import 'package:prody/ui/screens/addproject.dart';
 import 'package:prody/ui/screens/profile.dart';
 import 'package:prody/ui/screens/project_info.dart';
 import 'package:prody/ui/cards/personalinfo.dart';
@@ -76,10 +78,10 @@ Widget cards(BuildContext context) {
       builder: (context, projectSnap) {
         if (projectSnap.data != null) {
           return ListView.builder(
-              itemCount: projectSnap.data.length + 1,
+              itemCount: projectSnap.data.length + 2,
               itemBuilder: (context, index) {
-                if (index != 0) {
-                  Project project = projectSnap.data[index - 1];
+                if (index > 1) {
+                  Project project = projectSnap.data[index - 2];
                   return Padding(
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.05),
@@ -87,11 +89,19 @@ Widget cards(BuildContext context) {
                       child: ProjectCard(project: project),
                     ),
                   );
-                } else {
+                } else if (index == 0) {
                   return Padding(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).size.width * 0.05),
                     child: PersonalInfo(),
+                  );
+                } else {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.05,
+                      right: MediaQuery.of(context).size.width * 0.05,
+                    ),
+                    child: NewProject(),
                   );
                 }
               });
@@ -99,42 +109,6 @@ Widget cards(BuildContext context) {
           return Container();
         }
       });
-}
-
-Route createRoute(Project project) {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => ProjectInfo(project),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(0.0, 2.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}
-
-Route createRoute2() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Profile(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(0.0, 2.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }
 
 class ProjectCard extends StatelessWidget {
@@ -207,4 +181,59 @@ class ProjectCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Route createRoute(Project project) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        ProjectInfo(project),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 2.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Profile(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 2.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route createRoute3() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => AddProject(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 2.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
