@@ -12,17 +12,17 @@ class DataBaseServiceProject {
       "details": details,
       "deadlines": deadlines,
       "employees": employees,
+      "webTeam": employees,
     });
   }
 
   Project _projectDataFromSnapshot(DocumentSnapshot snapshot) {
     return Project(
-      title: snapshot.get("title"),
-      details: snapshot.get("details"),
-      deadlines: snapshot.get("deadlines"),
-      designTeam: snapshot.get("employees"),
-      webTeam: snapshot.get("webTeam")
-    );
+        title: snapshot.get("title"),
+        details: snapshot.get("details"),
+        deadlines: snapshot.get("deadlines"),
+        designTeam: snapshot.get("employees"),
+        webTeam: snapshot.get("webTeam"));
   }
 
   Stream<Project> projectData(String uid) {

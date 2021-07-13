@@ -6,6 +6,7 @@ import 'package:prody/services/database_project.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/ui/cards/newproject.dart';
 import 'package:prody/ui/screens/addproject.dart';
+import 'package:prody/ui/screens/addprojectdetails.dart';
 import 'package:prody/ui/screens/profile.dart';
 import 'package:prody/ui/screens/project_info.dart';
 import 'package:prody/ui/cards/personalinfo.dart';
@@ -72,7 +73,6 @@ Widget cards(BuildContext context) {
   final employee = Provider.of<Employee>(context);
   Future<List<Project>> projects =
       DataBaseServiceProject().userProjects(employee.uid);
-
   return FutureBuilder(
       future: projects.then((project) => project),
       builder: (context, projectSnap) {
@@ -82,6 +82,7 @@ Widget cards(BuildContext context) {
               itemBuilder: (context, index) {
                 if (index > 1) {
                   Project project = projectSnap.data[index - 2];
+                  print(project.title);
                   return Padding(
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.05),
@@ -223,6 +224,26 @@ Route createRoute2() {
 Route createRoute3() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => AddProject(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 2.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route createRoute4(List employees) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => AddProjectDetails(
+      employees: employees,
+    ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 2.0);
       var end = Offset.zero;
