@@ -89,7 +89,10 @@ class _SignInState extends State<SignIn> {
                       EasyLoading.show(status: "Loading...");
                       dynamic result = await _auth.signIn(email, password);
                       EasyLoading.dismiss();
-                      if (result != null) setState(() => error = result);
+                      if (result != null)
+                        setState(() {
+                          error = result;
+                        });
                     }
                   },
                   color: primaryColor,

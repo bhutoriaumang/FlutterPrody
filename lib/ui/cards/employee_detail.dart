@@ -10,7 +10,7 @@ class EmployeeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DatabaseService _database = DatabaseService(uid: uid);
-
+    print(uid);
     return FutureBuilder(
       future: _database.employee().then((employee) => employee),
       builder: (context, snapshot) {

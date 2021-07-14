@@ -82,7 +82,6 @@ Widget cards(BuildContext context) {
               itemBuilder: (context, index) {
                 if (index > 1) {
                   Project project = projectSnap.data[index - 2];
-                  print(project.title);
                   return Padding(
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.05),

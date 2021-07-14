@@ -1,12 +1,10 @@
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/models/project.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/ui/cards/employee_detail.dart';
 import 'package:prody/ui/cards/teamMembers.dart';
 import 'package:prody/ui/screens/teamMembersInfo.dart';
-import 'package:provider/provider.dart';
 
 import '../cards/calendar.dart';
 import '../cards/deadlinegraph.dart';
@@ -18,9 +16,7 @@ class ProjectInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final _employee = Provider.of<Employee>(context);
-
+    print(project.leader);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,7 +39,8 @@ class ProjectInfo extends StatelessWidget {
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).size.height * 0.02,
                 top: MediaQuery.of(context).size.height * 0.04),
-            child: EmployeeDetail(uid: _employee.uid, designation: "Project Lead"),
+            child: EmployeeDetail(
+                uid: project.leader, designation: "Project Lead"),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -72,7 +69,11 @@ class ProjectInfo extends StatelessWidget {
                     members: project.designTeam,
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => TeamMembersInfo(members: project.designTeam, team: "Design Team",)));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => TeamMembersInfo(
+                              members: project.designTeam,
+                              team: "Design Team",
+                            )));
                   },
                 ),
                 GestureDetector(
@@ -81,7 +82,9 @@ class ProjectInfo extends StatelessWidget {
                     members: project.webTeam,
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => TeamMembersInfo(members: project.webTeam, team: "Web Team")));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => TeamMembersInfo(
+                            members: project.webTeam, team: "Web Team")));
                   },
                 ),
               ],

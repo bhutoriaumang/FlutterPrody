@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:prody/models/CurrentUser.dart';
 import 'package:prody/shared/constants.dart';
 import 'package:prody/services/database_project.dart';
+import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class AddProjectDetails extends StatefulWidget {
   List employees;
   AddProjectDetails({this.employees});
@@ -17,6 +20,7 @@ class _AddProjectDetailsState extends State<AddProjectDetails> {
   static List<String> deadlinesList = [null];
   @override
   Widget build(BuildContext context) {
+    final employee = Provider.of<Employee>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -114,7 +118,8 @@ class _AddProjectDetailsState extends State<AddProjectDetails> {
                                   _currentTitle,
                                   _currentDesc,
                                   deadlinesList,
-                                  widget.employees);
+                                  widget.employees,
+                                  employee.uid);
                               EasyLoading.dismiss();
                               Navigator.popUntil(
                                   context, ModalRoute.withName('/'));
@@ -219,6 +224,7 @@ class _FriendTextFieldsState extends State<FriendTextFields> {
       ),
       child: TextFormField(
         controller: _nameController,
+        cursorColor: primaryColor,
         onChanged: (v) =>
             _AddProjectDetailsState.deadlinesList[widget.index] = v,
         decoration: textInputDecoration2.copyWith(

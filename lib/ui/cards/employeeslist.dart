@@ -12,6 +12,7 @@ class EmployeesList extends StatefulWidget {
 class _EmployeesListState extends State<EmployeesList> {
   @override
   Widget build(BuildContext context) {
+    final employee = Provider.of<Employee>(context);
     var employees = Provider.of<List<Employee>>(context) ?? [];
     List employeesid = [], unselected = [], selected = [];
     for (int i = 0; i < employees.length; i++) {

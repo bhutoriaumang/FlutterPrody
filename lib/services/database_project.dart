@@ -5,14 +5,15 @@ class DataBaseServiceProject {
   final CollectionReference _projects =
       FirebaseFirestore.instance.collection("Projects");
 
-  Future updateProjectData(
-      String title, String details, List deadlines, List employees) async {
+  Future updateProjectData(String title, String details, List deadlines,
+      List employees, String leader) async {
     return await _projects.doc(title).set({
       "title": title,
       "details": details,
       "deadlines": deadlines,
       "employees": employees,
       "webTeam": employees,
+      "leader": leader,
     });
   }
 
@@ -22,7 +23,8 @@ class DataBaseServiceProject {
         details: snapshot.get("details"),
         deadlines: snapshot.get("deadlines"),
         designTeam: snapshot.get("employees"),
-        webTeam: snapshot.get("webTeam"));
+        webTeam: snapshot.get("webTeam"),
+        leader: snapshot.get("leader"));
   }
 
   Stream<Project> projectData(String uid) {
@@ -44,7 +46,8 @@ class DataBaseServiceProject {
             details: doc["details"],
             deadlines: doc["deadlines"],
             designTeam: doc["employees"],
-            webTeam: doc["webTeam"]));
+            webTeam: doc["webTeam"],
+            leader: doc["leader"]));
       });
     });
     return projects;
