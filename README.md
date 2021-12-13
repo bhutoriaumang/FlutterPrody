@@ -2,8 +2,6 @@
 
 A task management app built using Flutter.
 
-![image](https://user-images.githubusercontent.com/64299262/145862877-4a9b48b5-9f0d-4b5e-af08-74daad5da860.png)
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
