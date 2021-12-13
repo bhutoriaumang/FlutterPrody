@@ -1,6 +1,6 @@
 # **ProDy**
 
-#### A task management app built using Flutter. ####
+#### An easy-to-use app which provides a productivity-based solution to help streamline the workflow of an organization. It aims at making the jobs of managers and employees easier by giving a metric to evaluate work of employees and to allow easy distribution of work among peers. ####
 
 ## Screenshots from app
 <p>
